@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+      <ion-buttons>
+        <button ion-button clear (click)="dismissModal()">Close</button>
+      </ion-buttons>
+      <ion-title>{{ book.name }}</ion-title>
+    </ion-navbar>
+</ion-header>
+    
+    
+<ion-content padding>
+    <ion-card>
+      <ion-card-header> {{ book.name}} </ion-card-header>
+    </ion-card>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+          <button 
+            ion-button 
+            full 
+            color="danger"
+            [disabled]="!book.isLent"
+            (click)="itemsService.onToggleItem(book)">
+              Lend book
+          </button>
+        </ion-col>
+        <ion-col>
+            <button 
+              ion-button 
+              full 
+              color="secondary"
+              [disabled]="book.isLent"
+              (click)="itemsService.onToggleItem(book)">
+                Return book
+            </button>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  
